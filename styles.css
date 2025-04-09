@@ -291,7 +291,7 @@ nav {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, rgba(94, 23, 235, 0.8), rgba(0, 180, 216, 0.8)),
+  background: linear-gradient(135deg, rgba(102,0,102,0.8), rgba(0,153,51,0.8)),
     url("/placeholder.svg?height=1080&width=1920") center / cover no-repeat;
   display: flex;
   align-items: center;
