@@ -291,8 +291,12 @@ nav {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, rgba(102,0,102,0.8), rgba(0,153,51,0.8)),
-    url("/placeholder.svg?height=1080&width=1920") center / cover no-repeat;
+  background-color: rgba(102,0,102,0.8);
+  background-image: linear-gradient(135deg, rgba(102,0,102,0.8), rgba(0,153,51,0.8)), 
+    url("assets/company/hero.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,6 +367,8 @@ nav {
     transform: translateY(0);
   }
 }
+
+
 
 /* About Section */
 .about {
