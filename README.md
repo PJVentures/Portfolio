@@ -1,6 +1,6 @@
 # PJ Ventures Landing Page
 
-![PJ Ventures Logo](assets/company/veachLogo.webp)
+![PJ Ventures Logo](assets/company/favicon/android-chrome-512x512.png)
 
 Welcome to the official repository for **[www.pjventures.org](https://www.pjventures.org)**, the personal travel and affiliate links landing page for PJ Ventures, owned by Patrick and Jennifer Veach. This site serves as a curated hub for their travel recommendations, affiliate partnerships, and lifestyle content, designed and developed with precision and hosted via GitHub Pages.
 
@@ -40,61 +40,15 @@ PJ Ventures is the passion project of Patrick and Jennifer Veach, a duo dedicate
 
 ## 📸 Screenshots
 
-![Landing Page](assets/screenshots/landing-page.png)  
+![Landing Page](assets/company/landingpage.webp)  
 *Caption: Explore travel and affiliate links at www.pjventures.org*
 
-*(Note: Replace `assets/screenshots/landing-page.png` with an actual screenshot path if available!)*
 
 ---
 
-## 🏁 Getting Started
-
-Interested in running this landing page locally or contributing updates? Here’s how:
-
-### Prerequisites
-- [Git](https://git-scm.com/)
-- [VS Code](https://code.visualstudio.com/) with [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-- A GitHub account
-
-### Installation
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/PJVentures/Portfolio.git
-   cd Portfolio
-Open in VS Code:
-Load the Portfolio folder in VS Code.
-Run Locally:
-Right-click index.html and select "Open with Live Server."
-View the Site:
-Visit http://127.0.0.1:5500 (or the assigned port) in your browser.
-Deployment
-Changes pushed to the main branch trigger GitHub Pages deployment.
-The site is live at www.pjventures.org via a custom domain.
-📂 Project Structure
-text
-
-Collapse
-
-Wrap
-
-Copy
-Portfolio/
-├── assets/
-│   ├── company/
-│   │   └── veachLogo.webp  # PJ Ventures logo
-│   └── screenshots/        # Optional screenshots
-├── index.html              # Landing page entry
-└── README.md               # This file
 🌐 Custom Domain Setup
 The site runs at www.pjventures.org with:
 
-GitHub Pages: Static hosting platform.
-IONOS DNS: Configured with A records to GitHub IPs:
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-CNAME: www resolves to pjventures.github.io. for subdomain access.
 🤝 Contributing
 Want to enhance this landing page? Contributions are appreciated:
 
@@ -107,9 +61,10 @@ Note: Please coordinate with PJ Ventures or their developer before making change
 
 📬 Contact PJ Ventures
 Reach out to Patrick and Jennifer Veach:
-
+Email: DreamTeam@PJVentures.org
 Website: www.pjventures.org
 GitHub: PJVentures
+
 ✨ Acknowledgments
 Hosted by GitHub Pages.
 Domain managed by IONOS.
