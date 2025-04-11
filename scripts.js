@@ -1,14 +1,14 @@
 // Mailchimp form validation
-(function($) {
+(function ($) {
   window.fnames = new Array();
   window.ftypes = new Array();
-  fnames[0]='EMAIL';ftypes[0]='email';
-  fnames[1]='FNAME';ftypes[1]='text';
-  fnames[2]='LNAME';ftypes[2]='text';
-  fnames[3]='ADDRESS';ftypes[3]='address';
-  fnames[4]='PHONE';ftypes[4]='phone';
-  fnames[5]='BIRTHDAY';ftypes[5]='birthday';
-  fnames[6]='COMPANY';ftypes[6]='text';
+  fnames[0] = 'EMAIL'; ftypes[0] = 'email';
+  fnames[1] = 'FNAME'; ftypes[1] = 'text';
+  fnames[2] = 'LNAME'; ftypes[2] = 'text';
+  fnames[3] = 'ADDRESS'; ftypes[3] = 'address';
+  fnames[4] = 'PHONE'; ftypes[4] = 'phone';
+  fnames[5] = 'BIRTHDAY'; ftypes[5] = 'birthday';
+  fnames[6] = 'COMPANY'; ftypes[6] = 'text';
 }(jQuery));
 var $mcj = jQuery.noConflict(true);
 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
       menuToggle.classList.toggle("active");
-      
+
       // Animate menu icon
       if (menuToggle.classList.contains("active")) {
         menuToggle.innerHTML = '<i class="fas fa-times"></i>';
@@ -47,27 +47,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
   const hero = document.querySelector(".hero");
   let lastScrollY = window.scrollY;
-  
+
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    
+
     // Header effect
     if (currentScrollY > 50) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
-    
+
     // Parallax effect for hero section
     if (hero && currentScrollY <= hero.offsetHeight) {
       const translateY = currentScrollY * 0.4;
       hero.style.backgroundPositionY = `calc(50% + ${translateY}px)`;
     }
-    
+
     // Direction-aware scroll animations
     const scrollingDown = currentScrollY > lastScrollY;
     document.body.setAttribute('data-scroll-direction', scrollingDown ? 'down' : 'up');
-    
+
     lastScrollY = currentScrollY;
   };
 
@@ -90,25 +90,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const distance = targetPosition - startPosition;
         const duration = 1000; // ms
         let start = null;
-        
+
         // Custom easing function
         function easeInOutQuart(t) {
           return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
         }
-        
+
         function step(timestamp) {
           if (!start) start = timestamp;
           const progress = timestamp - start;
           const percentage = Math.min(progress / duration, 1);
           const easing = easeInOutQuart(percentage);
-          
+
           window.scrollTo(0, startPosition + distance * easing);
-          
+
           if (progress < duration) {
             window.requestAnimationFrame(step);
           }
         }
-        
+
         window.requestAnimationFrame(step);
       }
     });
@@ -121,32 +121,32 @@ document.addEventListener("DOMContentLoaded", () => {
     if (newsletterForm) {
       const emailInput = newsletterForm.querySelector('input[type="email"]');
       const submitBtn = newsletterForm.querySelector('button[type="submit"]');
-      
+
       // Add focus effects
       if (emailInput) {
         emailInput.addEventListener('focus', () => {
           emailInput.parentElement.classList.add('focused');
         });
-        
+
         emailInput.addEventListener('blur', () => {
           emailInput.parentElement.classList.remove('focused');
         });
       }
-      
+
       newsletterForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        
+
         if (emailInput && emailInput.value) {
           // Visual feedback animation
           submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
-          
+
           // Simulate server request
           setTimeout(() => {
             // Success state
             submitBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
             submitBtn.classList.add('success');
             emailInput.value = "";
-            
+
             // Reset after delay
             setTimeout(() => {
               submitBtn.innerHTML = 'Subscribe';
@@ -162,24 +162,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (contactForm) {
       const formInputs = contactForm.querySelectorAll('input, textarea');
       const submitBtn = contactForm.querySelector('button[type="submit"]');
-      
+
       // Add validation classes
       formInputs.forEach(input => {
         // Add focus effects
         input.addEventListener('focus', () => {
           input.parentElement.classList.add('focused');
         });
-        
+
         input.addEventListener('blur', () => {
           input.parentElement.classList.remove('focused');
-          
+
           // Validate on blur
           if (input.hasAttribute('required') && !input.value.trim()) {
             input.parentElement.classList.add('error');
           } else {
             input.parentElement.classList.remove('error');
           }
-          
+
           // Email validation
           if (input.type === 'email' && input.value) {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -188,16 +188,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         });
-        
+
         // Clear error on input
         input.addEventListener('input', () => {
           input.parentElement.classList.remove('error');
         });
       });
-      
+
       contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        
+
         // Validate all fields
         let hasErrors = false;
         formInputs.forEach(input => {
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
             input.parentElement.classList.add('error');
             hasErrors = true;
           }
-          
+
           if (input.type === 'email' && input.value) {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(input.value)) {
@@ -214,21 +214,21 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         });
-        
+
         if (!hasErrors) {
           // Visual feedback animation
           submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
           submitBtn.disabled = true;
-          
+
           // Simulate server request
           setTimeout(() => {
             // Success state
             submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
             submitBtn.classList.add('success');
-            
+
             // Reset form
             this.reset();
-            
+
             // Reset after delay
             setTimeout(() => {
               submitBtn.innerHTML = 'Send Message';
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   };
-  
+
   enhanceForms();
 
   // Advanced scroll animations with Intersection Observer
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const animatedElements = document.querySelectorAll(
       ".blog-card, .affiliate-card, .about-image, .about-text, .section-title, .stat, .contact-item, .social-links a"
     );
-    
+
     // Animation variations
     const animations = [
       'fade-in',
@@ -259,28 +259,28 @@ document.addEventListener("DOMContentLoaded", () => {
       'scale-in',
       'rotate-in'
     ];
-    
+
     // Assign random animations to elements
     animatedElements.forEach((element, index) => {
       // Assign animation class
       const animationClass = `animate-${animations[index % animations.length]}`;
       element.classList.add(animationClass);
-      
+
       // Set initial state
       element.style.opacity = "0";
-      
+
       // Add delay for staggered effect
       const delay = (index % 3) * 0.15;
       element.style.transitionDelay = `${delay}s`;
     });
-    
+
     // Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animated');
           entry.target.style.opacity = "1";
-          
+
           // Unobserve after animation
           observer.unobserve(entry.target);
         }
@@ -290,26 +290,26 @@ document.addEventListener("DOMContentLoaded", () => {
       rootMargin: '0px',
       threshold: 0.15
     });
-    
+
     // Observe all elements
     animatedElements.forEach(element => {
       observer.observe(element);
     });
   };
-  
+
   setupScrollAnimations();
 
   // Parallax effect for sections
   const setupParallaxEffects = () => {
     const parallaxSections = document.querySelectorAll('.about, .affiliates, .newsletter');
-    
+
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      
+
       parallaxSections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
-        
+
         // Check if section is in viewport
         if (scrollY > sectionTop - window.innerHeight && scrollY < sectionTop + sectionHeight) {
           const yPos = (scrollY - sectionTop) * 0.1;
@@ -318,17 +318,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
-  
+
   setupParallaxEffects();
 
   // Typed.js-like effect for hero subtitle
   const setupTypingEffect = () => {
     const heroSubtitle = document.querySelector('.hero-content h2');
-    
+
     if (heroSubtitle) {
       const text = heroSubtitle.textContent;
       heroSubtitle.textContent = '';
-      
+
       const typeText = (text, element, i = 0) => {
         if (i < text.length) {
           element.textContent += text.charAt(i);
@@ -338,56 +338,56 @@ document.addEventListener("DOMContentLoaded", () => {
           element.classList.add('typing-done');
         }
       };
-      
+
       // Start typing after a delay
       setTimeout(() => {
         typeText(text, heroSubtitle);
       }, 1500);
     }
   };
-  
+
   setupTypingEffect();
 
   // Interactive affiliate cards
   const setupAffiliateCards = () => {
     const affiliateCards = document.querySelectorAll('.affiliate-card');
-    
+
     affiliateCards.forEach(card => {
       card.addEventListener('mouseenter', () => {
         // Add 3D tilt effect
         card.style.transition = 'transform 0.3s ease';
-        
+
         card.addEventListener('mousemove', (e) => {
           const cardRect = card.getBoundingClientRect();
           const cardCenterX = cardRect.left + cardRect.width / 2;
           const cardCenterY = cardRect.top + cardRect.height / 2;
-          
+
           const mouseX = e.clientX - cardCenterX;
           const mouseY = e.clientY - cardCenterY;
-          
+
           // Calculate rotation based on mouse position
           const rotateX = mouseY * -0.05;
           const rotateY = mouseX * 0.05;
-          
+
           card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
         });
       });
-      
+
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-        
+
         // Remove mousemove event
-        card.removeEventListener('mousemove', () => {});
+        card.removeEventListener('mousemove', () => { });
       });
     });
   };
-  
+
   setupAffiliateCards();
 
   // Preload images for smoother experience
   const preloadImages = () => {
     const imagesToPreload = document.querySelectorAll('img');
-    
+
     imagesToPreload.forEach(img => {
       const src = img.getAttribute('src');
       if (src) {
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   };
-  
+
   preloadImages();
 
   // Add scroll progress indicator
@@ -413,18 +413,18 @@ document.addEventListener("DOMContentLoaded", () => {
       z-index: 1001;
       transition: width 0.1s ease;
     `;
-    
+
     document.body.appendChild(progressBar);
-    
+
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
-      
+
       progressBar.style.width = `${scrollPercent}%`;
     });
   };
-  
+
   setupScrollProgress();
 
   // Add back-to-top button
@@ -452,9 +452,9 @@ document.addEventListener("DOMContentLoaded", () => {
       align-items: center;
       justify-content: center;
     `;
-    
+
     document.body.appendChild(backToTopBtn);
-    
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
         backToTopBtn.style.opacity = '1';
@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
         backToTopBtn.style.transform = 'translateY(20px)';
       }
     });
-    
+
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
-  
+
   setupBackToTop();
 
   // Add dark/light mode toggle
@@ -499,20 +499,20 @@ document.addEventListener("DOMContentLoaded", () => {
       justify-content: center;
       transition: all 0.3s ease;
     `;
-    
+
     document.body.appendChild(themeToggle);
-    
+
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.body.classList.add('dark-theme');
       themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
-    
+
     // Toggle theme on click
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
-      
+
       if (document.body.classList.contains('dark-theme')) {
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         localStorage.setItem('theme', 'dark');
@@ -522,7 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   };
-  
+
   setupThemeToggle();
 
   // Add CSS for dark theme
@@ -583,21 +583,21 @@ document.addEventListener("DOMContentLoaded", () => {
         color: #f0f0f0;
       }
     `;
-    
+
     document.head.appendChild(darkThemeStyles);
   };
-  
+
   addDarkThemeStyles();
 
   // Add image lazy loading
   const setupLazyLoading = () => {
     const lazyImages = document.querySelectorAll('img:not([loading])');
-    
+
     lazyImages.forEach(img => {
       img.setAttribute('loading', 'lazy');
     });
   };
-  
+
   setupLazyLoading();
 
   // Add page load animation
@@ -617,7 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
       justify-content: center;
       transition: opacity 0.5s ease;
     `;
-    
+
     const logo = document.createElement('div');
     logo.className = 'overlay-logo';
     logo.style.cssText = `
@@ -632,26 +632,26 @@ document.addEventListener("DOMContentLoaded", () => {
       transition: all 0.5s ease;
     `;
     logo.textContent = 'PJ Ventures';
-    
+
     pageOverlay.appendChild(logo);
     document.body.appendChild(pageOverlay);
-    
+
     // Animate logo
     setTimeout(() => {
       logo.style.opacity = '1';
       logo.style.transform = 'scale(1)';
     }, 100);
-    
+
     // Hide overlay
     setTimeout(() => {
       pageOverlay.style.opacity = '0';
-      
+
       // Remove overlay after animation
       setTimeout(() => {
         pageOverlay.remove();
       }, 500);
     }, 1500);
   };
-  
+
   setupPageLoadAnimation();
 });
