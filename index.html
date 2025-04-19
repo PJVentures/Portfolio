@@ -10,19 +10,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
   <style type="text/css">
+    /* MailChimp CSS */
     #mc_embed_signup {
       background: #fff;
   clear: left;
   font: 14px Helvetica, Arial, sans-serif;
-  width: 100%; /* Make the width responsive */
-  max-width: 600px; /* Optional: Set a maximum width for larger screens */
-  margin: 0 auto; /* Center the form horizontally */
-  padding: 20px; /* Add some spacing inside the form */
-  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
     }
   </style>
 
-
+<!--FaviCon Settings-->
   <!-- For .ico format (best compatibility) -->
   <link rel="icon" href="assets/company/favicon/favicon.ico" type="image/x-icon">
   <!-- For PNG format (modern browsers) -->
@@ -110,21 +111,20 @@
     <div class="container">
       <h2 class="section-title">Travel Blog</h2>
       <div class="blog-grid">
-        <div class="blog-card">
+        <div class="blog-card" data-blog-id="itzocal">
           <div class="blog-image">
             <img
-              src="https://scontent.ccdn.cloud/image/vivitravels-en/250def1a-e016-4b3a-844d-2707c86a32c0/maxw-960.jpg"
-              alt="Mexico City">
+              src="https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1000&auto=format&fit=crop"
+              alt="Itzocal, Mexico">
           </div>
           <div class="blog-content">
-            <div class="blog-date">June 15, 2023</div>
-            <h3>First Steps in Mexico City</h3>
-            <p>Our first week in Mexico City was filled with colorful streets, amazing food, and friendly locals. Here's
-              what we learned...</p>
+            <div class="blog-date">October 2021</div>
+            <h3>Our Journey to Itzocal: A Hidden Gem</h3>
+            <p>High in the rugged mountains of La Huasteca lies Itzocal—a village so remote that our first visit was the first by outsiders in 28 years...</p>
             <a href="#" class="read-more">Read More</a>
           </div>
         </div>
-        <div class="blog-card">
+        <div class="blog-card" data-blog-id="oaxaca">
           <div class="blog-image">
             <img
               src="https://www.planetware.com/photos-large/MEX/mexico-oaxaca-iglesia-de-santo-domingo.jpg"
@@ -138,7 +138,7 @@
             <a href="#" class="read-more">Read More</a>
           </div>
         </div>
-        <div class="blog-card">
+        <div class="blog-card" data-blog-id="puerto-vallarta">
           <div class="blog-image">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfoEEzsFt6JmbH3KDb23-1uyMsAiwop8TE_g&s"
               alt="Puerto Vallarta">
@@ -304,6 +304,76 @@
       </div>
     </div>
   </section>
+
+  <!-- Blog Post Popups -->
+  <div class="popup-overlay" id="popup-overlay"></div>
+
+  <!-- Itzocal Popup -->
+  <div class="blog-popup" id="popup-itzocal">
+    <div class="popup-content">
+      <span class="close-popup">&times;</span>
+      <h2>Our Journey to Itzocal: A Hidden Gem in Mexico's Mountains</h2>
+      <div class="popup-date">October 2021</div>
+
+      <div class="popup-gallery">
+        <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1000&auto=format&fit=crop" alt="Itzocal, Mexico" class="popup-main-image">
+      </div>
+
+      <div class="popup-text">
+        <h3>Our Journey to Itzocal: A Hidden Gem in Mexico's Mountains</h3>
+
+        <p>High in the rugged mountains of La Huasteca, Northern Hidalgo, lies Itzocal—a village so remote that our first visit in October 2021 was the first by outsiders in 28 years. This isn't just a place on the map; it's a community that has become part of our story, our purpose.</p>
+
+        <p>The road to Itzocal is a test of determination, winding through dense forests and over rocky terrain, often rendered impassable by fierce storms. But every challenge is worth it when we arrive and are greeted by the warm smiles of Miguel and his family, the heart of the local mission.</p>
+
+        <p>Miguel and his kin are Nahuatl, indigenous people whose resilience and spirit are as strong as the mountains around them. For years, they've been the backbone of their community, providing spiritual guidance and support in a place where resources are scarce. It's hard to believe that just 10 hours from the Texas/Mexico border, there are people who must venture into the mountains to gather wood just to cook their meals on outdoor stoves. Yet, this is the reality of life in Itzocal.</p>
+
+        <p>Our connection with this village began with a simple desire to help, but it has grown into something much deeper. Since 2021, we've supported the mission monthly with monetary gifts and personal visits, bringing not just supplies but also love, encouragement, and a reminder that they are not alone. Each trip is a chance to connect, to share stories, and to make a tangible difference.</p>
+
+        <p>One memory that stands out is the joy on Miguel's mother's face when she received a pair of reading glasses. For the first time, she could see the words on the page clearly—a small gift that opened up a world of possibilities. Moments like these remind us why we do what we do.</p>
+
+        <p>In Itzocal, we've found more than just a place to visit; we've found a community to support and love. It's a testament to the power of human connection and the impact we can make when we step out of our comfort zones. This village, with its breathtaking views and humble people, has shown us that adventure isn't just about seeing new places—it's about touching lives and being touched in return.</p>
+
+        <p>If two "regular" people like us can turn our dreams into reality, so can you. Whether it's traveling to remote villages or supporting causes close to your heart, every step you take can change lives—including your own.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oaxaca Popup -->
+  <div class="blog-popup" id="popup-oaxaca">
+    <div class="popup-content">
+      <span class="close-popup">&times;</span>
+      <h2>The Magic of Oaxaca</h2>
+      <div class="popup-date">July 2, 2023</div>
+
+      <div class="popup-gallery">
+        <img src="https://www.planetware.com/photos-large/MEX/mexico-oaxaca-iglesia-de-santo-domingo.jpg" alt="Oaxaca" class="popup-main-image">
+      </div>
+
+      <div class="popup-text">
+        <p>Oaxaca stole our hearts with its rich cultural heritage, incredible cuisine, and breathtaking landscapes.</p>
+        <p>More details about our Oaxaca trip will be added soon...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Puerto Vallarta Popup -->
+  <div class="blog-popup" id="popup-puerto-vallarta">
+    <div class="popup-content">
+      <span class="close-popup">&times;</span>
+      <h2>Beach Life in Puerto Vallarta</h2>
+      <div class="popup-date">August 10, 2023</div>
+
+      <div class="popup-gallery">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfoEEzsFt6JmbH3KDb23-1uyMsAiwop8TE_g&s" alt="Puerto Vallarta" class="popup-main-image">
+      </div>
+
+      <div class="popup-text">
+        <p>Working with ocean views has been a dream come true. Here's our experience setting up our digital nomad lifestyle.</p>
+        <p>More details about our Puerto Vallarta experience will be added soon...</p>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">

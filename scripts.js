@@ -537,15 +537,15 @@ document.addEventListener("DOMContentLoaded", () => {
         background-color: #121212;
         color: #f0f0f0;
       }
-      
+
       body.dark-theme header {
         background-color: rgba(30, 30, 30, 0.95);
       }
-      
+
       body.dark-theme header.scrolled {
         background-color: rgba(30, 30, 30, 0.98);
       }
-      
+
       body.dark-theme .blog-card,
       body.dark-theme .affiliate-card,
       body.dark-theme .form-group input,
@@ -553,32 +553,32 @@ document.addEventListener("DOMContentLoaded", () => {
         background-color: #1e1e1e;
         color: #f0f0f0;
       }
-      
+
       body.dark-theme .blog-content h3,
       body.dark-theme .affiliate-card h3 {
         color: #f0f0f0;
       }
-      
+
       body.dark-theme .blog-content p,
       body.dark-theme .affiliate-card p,
       body.dark-theme .stat-text {
         color: #aaa;
       }
-      
+
       body.dark-theme .social-links a {
         background-color: #2a2a2a;
         color: #f0f0f0;
       }
-      
+
       body.dark-theme .form-group input,
       body.dark-theme .form-group textarea {
         border-color: #333;
       }
-      
+
       body.dark-theme .section-title {
         color: #f0f0f0;
       }
-      
+
       body.dark-theme .nav-links a {
         color: #f0f0f0;
       }
@@ -654,4 +654,70 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setupPageLoadAnimation();
+
+  // Blog post popup functionality
+  const setupBlogPopups = () => {
+    const blogCards = document.querySelectorAll('.blog-card');
+    const popupOverlay = document.getElementById('popup-overlay');
+    const closeButtons = document.querySelectorAll('.close-popup');
+
+    // Open popup when clicking on a blog card
+    blogCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const blogId = this.getAttribute('data-blog-id');
+        if (blogId) {
+          const popup = document.getElementById(`popup-${blogId}`);
+          if (popup) {
+            // Show overlay
+            popupOverlay.style.display = 'block';
+
+            // Show popup
+            popup.style.display = 'block';
+
+            // Add active class after a small delay (for animation)
+            setTimeout(() => {
+              popup.classList.add('active');
+            }, 10);
+
+            // Prevent scrolling on body
+            document.body.style.overflow = 'hidden';
+          }
+        }
+      });
+    });
+
+    // Close popup when clicking on close button
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closePopup);
+    });
+
+    // Close popup when clicking on overlay
+    popupOverlay.addEventListener('click', closePopup);
+
+    // Close popup when pressing ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closePopup();
+      }
+    });
+
+    // Function to close active popup
+    function closePopup() {
+      const activePopup = document.querySelector('.blog-popup.active');
+      if (activePopup) {
+        activePopup.classList.remove('active');
+
+        // Hide popup after animation completes
+        setTimeout(() => {
+          activePopup.style.display = 'none';
+          popupOverlay.style.display = 'none';
+
+          // Re-enable scrolling on body
+          document.body.style.overflow = '';
+        }, 300);
+      }
+    }
+  };
+
+  setupBlogPopups();
 });

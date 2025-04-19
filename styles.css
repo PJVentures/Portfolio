@@ -889,6 +889,142 @@ nav {
   line-height: 1.7;
 }
 
+/* Blog Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  display: none;
+  backdrop-filter: blur(5px);
+}
+
+.blog-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  background-color: white;
+  z-index: 1002;
+  display: none;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.blog-popup.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.popup-content {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.popup-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.popup-date {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding: 0.2rem 0;
+  position: relative;
+}
+
+.popup-date::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.popup-gallery {
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.popup-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.popup-text h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.popup-text h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.popup-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.popup-text p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.popup-text p:last-of-type {
+  font-style: italic;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+
+.close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.close-popup:hover {
+  color: var(--primary-color);
+  transform: rotate(90deg);
+}
+
 /* Newsletter Section */
 .newsletter {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
