@@ -720,4 +720,44 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setupBlogPopups();
+
+  // Gallery functionality for blog popups
+  const setupGallery = () => {
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+    const mainImage = document.querySelector('.popup-main-image');
+
+    if (galleryThumbs.length && mainImage) {
+      // Set first thumbnail as active by default
+      galleryThumbs[0].classList.add('active');
+
+      galleryThumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          // Update main image
+          const fullImageSrc = this.getAttribute('data-full');
+          const altText = this.getAttribute('alt');
+
+          // Animate image change
+          mainImage.style.opacity = '0';
+
+          setTimeout(() => {
+            mainImage.src = fullImageSrc;
+            mainImage.alt = altText;
+            mainImage.style.opacity = '1';
+          }, 300);
+
+          // Update active state
+          galleryThumbs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    }
+  };
+
+  // Call gallery setup when a popup is opened
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.blog-card')) {
+      // Small delay to ensure popup is rendered
+      setTimeout(setupGallery, 100);
+    }
+  });
 });
